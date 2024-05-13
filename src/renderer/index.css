@@ -1,0 +1,71 @@
+@page {
+  margin: 0;
+  page-break-before: always;
+}
+
+* {
+  font-family: "Vazirmatn", sans-serif;
+  print-color-adjust: exact !important;
+  -webkit-print-color-adjust: exact !important;
+  direction: rtl;
+}
+
+body {
+  font-size: 12px;
+  /*line-height: 24px;*/
+}
+.barcode-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.font {
+  font-size: 12px;
+  margin: 0 15px;
+}
+
+table {
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: monospace, cursive;
+}
+
+table tbody {
+  border-top: 1px solid black;
+}
+
+table tfoot th {
+  font-size: 20px;
+}
+
+table th {
+  background-color: black;
+  color: white;
+}
+
+table th,
+table td {
+  padding: 6px 2px;
+}
+
+table tr {
+  border-bottom: 1px solid black;
+  padding: 6px 0;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table img {
+  max-height: 40px;
+}
+
+@media print {
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
