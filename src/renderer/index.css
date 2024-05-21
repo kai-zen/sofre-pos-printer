@@ -4,7 +4,7 @@
 }
 
 * {
-  font-family: "Lalezar", system-ui;
+  font-family: "dana", system-ui;
   /* font-family: "Vazirmatn", sans-serif; */
   print-color-adjust: exact !important;
   -webkit-print-color-adjust: exact !important;
@@ -69,4 +69,94 @@ table img {
   table tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+}
+
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 200;
+  src: url("./font/woff2/DanaFaNum-UltraLight.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-UltraLight.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 300;
+  src: url("./font/woff2/DanaFaNum-Light.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-Light.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 400;
+  src: url("./font/woff2/DanaFaNum-Regular.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 500;
+  src: url("./font/woff2/DanaFaNum-Medium.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-Medium.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 600;
+  src: url("./font/woff2/DanaFaNum-DemiBold.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-DemiBold.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 800;
+  src: url("./font/woff2/DanaFaNum-ExtraBold.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-ExtraBold.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 900;
+  src: url("./font/woff2/DanaFaNum-Black.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-Black.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 930;
+  src: url("./font/woff2/DanaFaNum-ExtraBlack.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-ExtraBlack.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 960;
+  src: url("./font/woff2/DanaFaNum-Heavy.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-Heavy.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: 990;
+  src: url("./font/woff2/DanaFaNum-Fat.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-Fat.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: dana;
+  font-style: normal;
+  font-weight: bold;
+  src: url("./font/woff2/DanaFaNum-ExtraBold.woff2") format("woff2"),
+    url("./font/woff/DanaFaNum-ExtraBold.woff") format("woff");
+  font-display: swap;
 }
