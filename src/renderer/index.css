@@ -5,7 +5,6 @@
 
 * {
   font-family: "dana", system-ui;
-  /* font-family: "Vazirmatn", sans-serif; */
   print-color-adjust: exact !important;
   -webkit-print-color-adjust: exact !important;
   direction: rtl;
@@ -37,10 +36,6 @@ table tbody {
   border-top: 1px solid black;
 }
 
-table tfoot th {
-  font-size: 20px;
-}
-
 table th {
   background-color: black;
   color: white;
@@ -57,18 +52,8 @@ table tr {
   text-align: center;
 }
 
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
 table img {
   max-height: 40px;
-}
-
-@media print {
-  table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
 }
 
 @font-face {
@@ -116,46 +101,6 @@ table img {
   font-family: dana;
   font-style: normal;
   font-weight: 800;
-  src: url("./font/woff2/DanaFaNum-ExtraBold.woff2") format("woff2"),
-    url("./font/woff/DanaFaNum-ExtraBold.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: dana;
-  font-style: normal;
-  font-weight: 900;
-  src: url("./font/woff2/DanaFaNum-Black.woff2") format("woff2"),
-    url("./font/woff/DanaFaNum-Black.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: dana;
-  font-style: normal;
-  font-weight: 930;
-  src: url("./font/woff2/DanaFaNum-ExtraBlack.woff2") format("woff2"),
-    url("./font/woff/DanaFaNum-ExtraBlack.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: dana;
-  font-style: normal;
-  font-weight: 960;
-  src: url("./font/woff2/DanaFaNum-Heavy.woff2") format("woff2"),
-    url("./font/woff/DanaFaNum-Heavy.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: dana;
-  font-style: normal;
-  font-weight: 990;
-  src: url("./font/woff2/DanaFaNum-Fat.woff2") format("woff2"),
-    url("./font/woff/DanaFaNum-Fat.woff") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: dana;
-  font-style: normal;
-  font-weight: bold;
   src: url("./font/woff2/DanaFaNum-ExtraBold.woff2") format("woff2"),
     url("./font/woff/DanaFaNum-ExtraBold.woff") format("woff");
   font-display: swap;
