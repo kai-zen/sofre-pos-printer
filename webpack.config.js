@@ -25,6 +25,7 @@ let common_config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
+    stats: {errorDetails: true},
     externals: nodeExternals(),
 }
 

@@ -11,17 +11,12 @@
 }
 
 body {
-  font-size: 12px;
-  /*line-height: 24px;*/
+  font-size: 14px;
 }
-.barcode-container::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+
 .font {
-  font-size: 12px;
-  margin: 0 15px;
+  font-size: 14px;
+  margin: 0 16px;
 }
 
 table {
