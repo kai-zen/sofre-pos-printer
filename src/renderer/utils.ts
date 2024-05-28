@@ -10,6 +10,33 @@ export const generatePageText = (arg: PosPrintData) => {
   return div;
 };
 
+export const generatePageDiv = (arg: PosPrintData) => {
+  const { factor_number, time } = arg.divVals || {};
+
+  let parent = document.createElement("div") as HTMLElement;
+  parent.setAttribute("class", "row-flex");
+
+  // make the time
+  const theTime = document.createElement("p") as HTMLElement;
+  theTime.innerText = time || "";
+  theTime.setAttribute("class", "time-p");
+
+  // make factor box
+  let factorBox = document.createElement("div") as HTMLElement;
+  factorBox.setAttribute("class", "col-flex");
+  const theH6 = document.createElement("h6") as HTMLElement;
+  const theP = document.createElement("p") as HTMLElement;
+  theP.innerText = "فاکتور";
+  theH6.innerText = `شماره ${String(factor_number || "")}`;
+  factorBox.appendChild(theP);
+  factorBox.appendChild(theH6);
+
+  parent.appendChild(factorBox);
+  parent.appendChild(theTime);
+
+  return parent;
+};
+
 export const generateTableCell = (
   arg: PosPrintData,
   type = "td"

@@ -44,7 +44,7 @@ export class PosPrinter {
 
       let mainWindow = new BrowserWindow({
         width: parsePaperWidth(options.pageSize),
-        height: 1200,
+        height: 1_200,
         show: Boolean(options.preview),
         webPreferences: {
           nodeIntegration: true,
@@ -62,11 +62,11 @@ export class PosPrinter {
         await sendIpcMsg("body-init", mainWindow.webContents, options);
 
         // Render print data as html in the mainWindow render process
-        await PosPrinter.renderPrintDocument(mainWindow, data);
+        await this.renderPrintDocument(mainWindow, data);
 
         let width = parsePaperWidthInMicrons(options.pageSize);
         const clientHeight = await mainWindow.webContents.executeJavaScript(
-          "document.body.clientHeight"
+          "document.body.scrollHeight"
         );
         const height = convertPixelsToMicrons(clientHeight);
 

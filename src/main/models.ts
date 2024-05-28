@@ -65,9 +65,13 @@ export interface PosPrintData {
   tableHeaderStyle?: PrintDataStyle;
   tableBodyStyle?: PrintDataStyle;
   tableFooterStyle?: PrintDataStyle;
+  divVals?: {
+    factor_number: number | string;
+    time: string;
+  };
 }
 
-export declare type PosPrintType = "text" | "image" | "table";
+export declare type PosPrintType = "text" | "image" | "table" | "div";
 
 export interface PrintDataStyle {
   accentColor?: string;

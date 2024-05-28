@@ -1,6 +1,7 @@
 import "./index.css";
 import {
   applyElementStyles,
+  generatePageDiv,
   generatePageText,
   generateTableCell,
   renderImageToPage,
@@ -15,14 +16,18 @@ ipcRender.on("body-init", (e, arg) => {
 });
 
 ipcRender.on("render-line", async (event, arg) => {
-  if (arg.line.type === "text") {
+  const { type } = arg.line;
+  if (type === "text") {
     body.appendChild(generatePageText(arg.line));
     event.sender.send("render-line-reply", { status: true, error: null });
-  } else if (arg.line.type === "image") {
+  } else if (type === "div") {
+    body.appendChild(generatePageDiv(arg.line));
+    event.sender.send("render-line-reply", { status: true, error: null });
+  } else if (type === "image") {
     const img = await renderImageToPage(arg.line);
     body.appendChild(img);
     event.sender.send("render-line-reply", { status: true, error: null });
-  } else if (arg.line.type === "table") {
+  } else if (type === "table") {
     // Creating table
     let tableContainer = document.createElement("div");
     tableContainer.setAttribute("id", `table-container-${arg.lineIndex}`);
