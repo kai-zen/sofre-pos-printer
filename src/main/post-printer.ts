@@ -2,10 +2,10 @@ import { PosPrintData, PosPrintOptions } from "./models";
 import { BrowserWindow } from "electron";
 import { join } from "path";
 import {
-  convertPixelsToMicrons,
   parsePaperWidth,
-  parsePaperWidthInMicrons,
+  parsePaperSizeInMicrons,
   sendIpcMsg,
+  sleep,
 } from "./utils";
 
 if (process.type === "renderer")
@@ -64,11 +64,13 @@ export class PosPrinter {
         // Render print data as html in the mainWindow render process
         await this.renderPrintDocument(mainWindow, data);
 
-        let width = parsePaperWidthInMicrons(options.pageSize);
+        let { height, width } = parsePaperSizeInMicrons(options.pageSize);
+        await sleep(800);
         const clientHeight = await mainWindow.webContents.executeJavaScript(
-          "document.body.scrollHeight"
+          "document.body.clientHeight"
         );
-        const height = convertPixelsToMicrons(clientHeight);
+
+        height = Math.floor((Math.floor(clientHeight) + 16) * 264.5833);
 
         if (options.preview) {
           resolve({ complete: true, data, options });
@@ -81,12 +83,12 @@ export class PosPrinter {
             copies: options?.copies || 1,
             //  1px = 264.5833 microns
             pageSize: { width, height },
+            margins: {
+              bottom: 8,
+            },
             ...(options.color && { color: options.color }),
             ...(options.margins && { margins: options.margins }),
             ...(options.landscape && { landscape: options.landscape }),
-            ...(options.scaleFactor && {
-              scaleFactor: options.scaleFactor,
-            }),
             ...(options.pagesPerSheet && {
               pagesPerSheet: options.pagesPerSheet,
             }),
@@ -110,33 +112,14 @@ export class PosPrinter {
     });
   }
 
-  private static renderPrintDocument(
-    window: any,
-    data: PosPrintData[]
-  ): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      for await (const [lineIndex, line] of data.entries()) {
-        if (line.type === "image" && !line.path && !line.url) {
-          window.close();
-          reject(
-            new Error("An Image url/path is required for type image").toString()
-          );
-          break;
-        }
-
-        const result: any = await sendIpcMsg(
-          "render-line",
-          window.webContents,
-          { line, lineIndex }
-        );
-        if (!result?.status) {
-          window.close();
-          reject(result?.error);
-          return;
-        }
-      }
-      // when the render process is done rendering the page, resolve
-      resolve({ message: "page-rendered" });
-    });
+  private static async renderPrintDocument(window: any, data: PosPrintData[]) {
+    for await (const [lineIndex, line] of data.entries()) {
+      await sendIpcMsg("render-line", window.webContents, {
+        line,
+        lineIndex,
+      });
+    }
+    // when the render process is done rendering the page, resolve
+    return { message: "page-rendered" };
   }
 }

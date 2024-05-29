@@ -26,8 +26,12 @@ export const parsePaperWidth = (pageSize: PaperSize) => {
     : 302;
 };
 
-export function parsePaperWidthInMicrons(pageSize: PaperSize): number {
-  let width = 58000;
+export function parsePaperSizeInMicrons(pageSize?: PaperSize): {
+  width: number;
+  height: number;
+} {
+  let width = 58000,
+    height = 10000; // in microns
   if (typeof pageSize == "string") {
     switch (pageSize) {
       case "44mm":
@@ -50,9 +54,17 @@ export function parsePaperWidthInMicrons(pageSize: PaperSize): number {
         break;
     }
   }
-  return width;
+
+  return {
+    width,
+    height,
+  };
 }
 
 export function convertPixelsToMicrons(pixels: number): number {
-  return Math.ceil(pixels * 264.5833);
+  return Math.ceil(pixels * 265);
+}
+
+export async function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
