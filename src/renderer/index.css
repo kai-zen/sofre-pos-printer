@@ -50,6 +50,7 @@ body {
   line-height: 18px;
   font-weight: 500;
   align-self: flex-end;
+  direction: ltr;
 }
 
 table {
@@ -71,12 +72,12 @@ table th {
 
 table th,
 table td {
-  padding: 2px;
+  padding: 6px 2px;
 }
 
 table tr {
   border-bottom: 1px solid black;
-  padding: 2px;
+  padding: 6px 2px;
   text-align: center;
 }
 
